@@ -1,0 +1,15 @@
+.form-container { max-width: 560px; margin: 2rem auto; font-family: sans-serif; }
+    fieldset { border: 1px solid #ccc; border-radius: 6px; padding: 1rem; margin: 1rem 0; }
+    legend { font-weight: 600; padding: 0 .5rem; }
+    .form-field { display: flex; flex-direction: column; margin-bottom: .75rem; }
+    .form-field label { font-size: .85rem; margin-bottom: .25rem; color: #555; }
+    input { padding: .45rem .6rem; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .error { color: #c0392b; font-size: .8rem; margin-top: .2rem; }
+    button { padding: .6rem 1.4rem; background: #3498db; color: #fff;
+             border: none; border-radius: 4px; cursor: pointer; font-size: 1rem; }
+    button:disabled { background: #aaa; }
+    .preview { margin-top: 1.5rem; background: #f8f9fa; padding: 1rem; border-radius: 6px; }
+    pre { font-size: .8rem; overflow-x: auto; }
+    .valid { color: green; font-weight: 600; }
+    .invalid { color: crimson; font-weight: 600; }

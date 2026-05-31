@@ -1,0 +1,93 @@
+<div class="form-container">
+      <h2>User Registration</h2>
+ 
+      <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+ 
+        <!-- Top-level fields -->
+        <div class="form-field">
+          <label>Full Name</label>
+          <input formControlName="fullName" placeholder="John Doe" />
+          <span class="error" *ngIf="registrationForm.get('fullName')?.invalid && registrationForm.get('fullName')?.touched">
+            Name is required
+          </span>
+        </div>
+ 
+        <div class="form-field">
+          <label>Email</label>
+          <input formControlName="email" type="email" placeholder="john@example.com" />
+          <span class="error" *ngIf="registrationForm.get('email')?.invalid && registrationForm.get('email')?.touched">
+            Valid email is required
+          </span>
+        </div>
+ 
+        <!-- ── Nested FormGroup: address ── -->
+        <fieldset formGroupName="address">
+          <legend>Address</legend>
+ 
+          <div class="form-field">
+            <label>Street</label>
+            <input formControlName="street" placeholder="123 Main St" />
+          </div>
+ 
+          <div class="form-row">
+            <div class="form-field">
+              <label>City</label>
+              <input formControlName="city" placeholder="New York" />
+            </div>
+ 
+            <div class="form-field">
+              <label>ZIP Code</label>
+              <input formControlName="zip" placeholder="10001" />
+            </div>
+          </div>
+ 
+          <!-- ── Doubly Nested FormGroup: address > coordinates ── -->
+          <fieldset formGroupName="coordinates">
+            <legend>Coordinates (optional)</legend>
+            <div class="form-row">
+              <div class="form-field">
+                <label>Latitude</label>
+                <input formControlName="lat" type="number" placeholder="40.7128" />
+              </div>
+              <div class="form-field">
+                <label>Longitude</label>
+                <input formControlName="lng" type="number" placeholder="-74.0060" />
+              </div>
+            </div>
+          </fieldset>
+        </fieldset>
+ 
+        <!-- ── Nested FormGroup: password ── -->
+        <fieldset formGroupName="passwordGroup">
+          <legend>Set Password</legend>
+ 
+          <div class="form-field">
+            <label>Password</label>
+            <input formControlName="password" type="password" placeholder="••••••••" />
+          </div>
+ 
+          <div class="form-field">
+            <label>Confirm Password</label>
+            <input formControlName="confirmPassword" type="password" placeholder="••••••••" />
+          </div>
+ 
+          <span class="error"
+            *ngIf="registrationForm.get('passwordGroup')?.hasError('passwordMismatch') &&
+                   registrationForm.get('passwordGroup')?.touched">
+            Passwords do not match
+          </span>
+        </fieldset>
+ 
+        <button type="submit" [disabled]="registrationForm.invalid">Register</button>
+ 
+      </form>
+ 
+      <!-- Live form value preview -->
+      <div class="preview">
+        <h4>Form Value (live)</h4>
+        <pre>{{ registrationForm.value | json }}</pre>
+ 
+        <h4>Form Status</h4>
+        <p [class]="registrationForm.status.toLowerCase()">{{ registrationForm.status }}</p>
+      </div>
+    </div>
