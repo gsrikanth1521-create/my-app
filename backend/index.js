@@ -41,6 +41,6 @@ app.delete('/api/items/:id', async (req,res) => {
   res.status(200).json({ message: 'Item deleted', items });
 });
 
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.listen(port, () => console.log(`API running on port ${port}`));
